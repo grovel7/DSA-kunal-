@@ -12,23 +12,24 @@ public class a2dArraySearch
             {81,35}
 
         };
-        int target =1;
-        int[] ans = arraySearch(arr, target);
-        System.out.print(Arrays.toString(ans));
+        
+        int ans = arraySearch(arr);
+        System.out.print((ans));
     }
 
-    static int[] arraySearch( int [][] arr,int target)
+    static int arraySearch( int [][] arr)
     {
-        for ( int row = 0;row<arr.length;row++)
+        int maxNum = arr[0][0];
+        for( int i = 0;i<arr.length;i++)
         {
-            for ( int col = 0;col<arr.length;col++)
+            for( int j = 0;j<arr[i].length;j++) // iterate on row ko length not the entire array length :)
             {
-                if(arr[row][col] == target)
+                if( maxNum < arr[i][j] )
                 {
-                    return new int[]{row,col};
+                    maxNum =arr[i][j];
                 }
             }
         }
-        return new int[]{-1,-1};
+        return maxNum;
     }
 }
